@@ -21,7 +21,7 @@ A Go-native Collections Framework inspired by Java/Kotlin `java.util.*`, built w
 ## Install
 
 ```bash
-go get github.com/moaazelzayat/gollection
+go get github.com/goforces/gollection
 ```
 
 ## Quick Start
@@ -31,8 +31,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/moaazelzayat/gollection/stack"
-	"github.com/moaazelzayat/gollection/queue"
+	"github.com/goforces/gollection/stack"
+	"github.com/goforces/gollection/queue"
 )
 
 func main() {

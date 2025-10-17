@@ -1,3 +1,3 @@
-module github.com/moaazelzayat/gollection
+module github.com/goforces/gollection
 
-go 1.24.2
+go 1.23
