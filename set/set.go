@@ -1,3 +1,8 @@
+// Package set provides a generic hash set implementation.
+//
+// ⚠️  NOT THREAD-SAFE
+// This implementation is not safe for concurrent access.
+// Wrap with external synchronization (sync.Mutex) if needed.
 package set
 
 // HashSet is a generic set backed by a map.

@@ -1,3 +1,8 @@
+// Package collections provides generic data structures and functional programming utilities.
+//
+// ⚠️  NOT THREAD-SAFE
+// This implementation is not safe for concurrent access.
+// Wrap with external synchronization (sync.Mutex) if needed.
 package collections
 
 // Dictionary is a thin wrapper over a Go map with helpful methods.

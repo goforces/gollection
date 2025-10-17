@@ -1,3 +1,8 @@
+// Package tree provides a generic binary search tree implementation.
+//
+// ⚠️  NOT THREAD-SAFE
+// This implementation is not safe for concurrent access.
+// Wrap with external synchronization (sync.Mutex) if needed.
 package tree
 
 // BinaryTree is a basic binary search tree for ordered keys using comparator.

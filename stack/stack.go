@@ -1,3 +1,8 @@
+// Package stack provides a generic LIFO stack.
+//
+// ⚠️  NOT THREAD-SAFE
+// This implementation is not safe for concurrent access.
+// Wrap with external synchronization (sync.Mutex) if needed.
 package stack
 
 // Stack is a generic LIFO stack backed by a slice.

@@ -1,3 +1,8 @@
+// Package queue provides generic FIFO queue, double-ended queue, and priority queue implementations.
+//
+// ⚠️  NOT THREAD-SAFE
+// This implementation is not safe for concurrent access.
+// Wrap with external synchronization (sync.Mutex) if needed.
 package queue
 
 // Queue is a generic FIFO queue implemented as a ring buffer.

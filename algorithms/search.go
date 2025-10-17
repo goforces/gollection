@@ -1,3 +1,6 @@
+// Package algorithms provides generic sorting and searching algorithms.
+//
+// Note: These are stateless utility functions and are safe for concurrent use.
 package algorithms
 
 // BinarySearch returns the index of target in a sorted slice using cmp comparator.

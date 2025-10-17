@@ -1,3 +1,8 @@
+// Package graph provides a generic adjacency-list graph implementation.
+//
+// ⚠️  NOT THREAD-SAFE
+// This implementation is not safe for concurrent access.
+// Wrap with external synchronization (sync.Mutex) if needed.
 package graph
 
 // Graph is a simple adjacency-list graph supporting directed or undirected edges.
