@@ -1,0 +1,134 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go build cache
+.cache/
+
+# Coverage files
+coverage.txt
+coverage.html
+*.coverprofile
+c.out
+
+# Benchmarks
+*.bench
+
+# Profiling files
+*.prof
+*.pprof
+cpu.prof
+mem.prof
+*.mprof
+*.trace
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# GoLand
+.idea/
+*.iml
+out/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+
+# Build and distribution
+/dist/
+/build/
+/bin/
+/pkg/
+
+# Documentation build
+/docs/_build/
+/site/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# CI/CD
+.github/workflows/*.log
+
+# Debugging
+debug
+debug.test
+
+# Test cache
+.testcache/
+
+# Air live reload (if using)
+tmp/
+
+# Local configuration
+*.local
+
+# Release artifacts
+*.tar.gz
+*.zip
+
+ROADMAP.md
