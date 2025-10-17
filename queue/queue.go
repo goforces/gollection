@@ -86,3 +86,28 @@ func (q *Queue[T]) ToSlice() []T {
 	}
 	return out
 }
+
+// QueueFromSlice creates a Queue from a slice.
+// Elements are enqueued in order (first element will be at front).
+func QueueFromSlice[T any](items []T) *Queue[T] {
+	q := NewQueue[T]()
+	for _, item := range items {
+		q.Enqueue(item)
+	}
+	return q
+}
+
+// Clone returns a shallow copy of the queue.
+func (q *Queue[T]) Clone() *Queue[T] {
+	if q.size == 0 {
+		return NewQueue[T]()
+	}
+	clone := &Queue[T]{
+		buf:  make([]T, len(q.buf)),
+		head: q.head,
+		tail: q.tail,
+		size: q.size,
+	}
+	copy(clone.buf, q.buf)
+	return clone
+}

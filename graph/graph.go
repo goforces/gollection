@@ -67,3 +67,15 @@ func (g *Graph[T]) RemoveEdge(u, v T) {
 		}
 	}
 }
+
+// Clone returns a deep copy of the graph.
+func (g *Graph[T]) Clone() *Graph[T] {
+	clone := New[T](g.directed)
+	for vertex, neighbors := range g.adj {
+		clone.adj[vertex] = make(map[T]float64)
+		for neighbor, weight := range neighbors {
+			clone.adj[vertex][neighbor] = weight
+		}
+	}
+	return clone
+}

@@ -70,3 +70,12 @@ func (s *Stack[T]) ToSlice() []T {
 	copy(out, s.data)
 	return out
 }
+
+// Clone returns a shallow copy of the stack.
+func (s *Stack[T]) Clone() *Stack[T] {
+	clone := &Stack[T]{
+		data: make([]T, len(s.data)),
+	}
+	copy(clone.data, s.data)
+	return clone
+}

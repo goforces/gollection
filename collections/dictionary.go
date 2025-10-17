@@ -11,9 +11,15 @@ type Dictionary[K comparable, V any] struct {
 	m map[K]V
 }
 
-// NewDictionary returns an empty Dictionary.
-func NewDictionary[K comparable, V any]() *Dictionary[K, V] {
+// New returns an empty Dictionary.
+func New[K comparable, V any]() *Dictionary[K, V] {
 	return &Dictionary[K, V]{m: make(map[K]V)}
+}
+
+// NewDictionary returns an empty Dictionary.
+// Deprecated: Use New instead.
+func NewDictionary[K comparable, V any]() *Dictionary[K, V] {
+	return New[K, V]()
 }
 
 // FromMap creates a Dictionary from a map copy.
@@ -94,4 +100,13 @@ func (d *Dictionary[K, V]) ToMap() map[K]V {
 		dup[k] = v
 	}
 	return dup
+}
+
+// Clone returns a shallow copy of the dictionary.
+func (d *Dictionary[K, V]) Clone() *Dictionary[K, V] {
+	clone := New[K, V]()
+	for k, v := range d.m {
+		clone.m[k] = v
+	}
+	return clone
 }

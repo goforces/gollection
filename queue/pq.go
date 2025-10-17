@@ -52,6 +52,28 @@ func (pq *PriorityQueue[T]) Clear() {
 	pq.h.data = nil
 }
 
+// PriorityQueueFromSlice creates a PriorityQueue from a slice using the provided ordering.
+// The function less must return true when a should come before b.
+func PriorityQueueFromSlice[T any](items []T, less func(a, b T) bool) *PriorityQueue[T] {
+	pq := NewPriorityQueue[T](less)
+	for _, item := range items {
+		pq.Push(item)
+	}
+	return pq
+}
+
+// Clone returns a shallow copy of the priority queue.
+func (pq *PriorityQueue[T]) Clone() *PriorityQueue[T] {
+	clone := &PriorityQueue[T]{
+		h: &genericHeap[T]{
+			data: make([]T, len(pq.h.data)),
+			less: pq.h.less,
+		},
+	}
+	copy(clone.h.data, pq.h.data)
+	return clone
+}
+
 // internal generic heap wrapper
 type genericHeap[T any] struct {
 	data []T

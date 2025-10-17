@@ -18,10 +18,16 @@ type node[K any, V any] struct {
 	right *node[K, V]
 }
 
-// NewBinaryTree creates an empty BST using the provided comparator.
+// New creates an empty BST using the provided comparator.
 // cmp(a,b) should return -1 if a<b, 0 if equal, 1 if a>b.
-func NewBinaryTree[K any, V any](cmp func(a, b K) int) *BinaryTree[K, V] {
+func New[K any, V any](cmp func(a, b K) int) *BinaryTree[K, V] {
 	return &BinaryTree[K, V]{cmp: cmp}
+}
+
+// NewBinaryTree creates an empty BST using the provided comparator.
+// Deprecated: Use New instead.
+func NewBinaryTree[K any, V any](cmp func(a, b K) int) *BinaryTree[K, V] {
+	return New[K, V](cmp)
 }
 
 // Put inserts or replaces a key.
@@ -111,4 +117,24 @@ func findMin[K any, V any](n *node[K, V]) *node[K, V] {
 		n = n.left
 	}
 	return n
+}
+
+// Clone returns a deep copy of the tree.
+func (t *BinaryTree[K, V]) Clone() *BinaryTree[K, V] {
+	return &BinaryTree[K, V]{
+		root: cloneNode(t.root),
+		cmp:  t.cmp,
+	}
+}
+
+func cloneNode[K any, V any](n *node[K, V]) *node[K, V] {
+	if n == nil {
+		return nil
+	}
+	return &node[K, V]{
+		key:   n.key,
+		val:   n.val,
+		left:  cloneNode(n.left),
+		right: cloneNode(n.right),
+	}
 }

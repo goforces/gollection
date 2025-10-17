@@ -111,3 +111,28 @@ func (d *Deque[T]) ToSlice() []T {
 	}
 	return out
 }
+
+// DequeFromSlice creates a Deque from a slice.
+// Elements are added in order (first element will be at front).
+func DequeFromSlice[T any](items []T) *Deque[T] {
+	d := NewDeque[T]()
+	for _, item := range items {
+		d.PushBack(item)
+	}
+	return d
+}
+
+// Clone returns a shallow copy of the deque.
+func (d *Deque[T]) Clone() *Deque[T] {
+	if d.size == 0 {
+		return NewDeque[T]()
+	}
+	clone := &Deque[T]{
+		buf:  make([]T, len(d.buf)),
+		head: d.head,
+		tail: d.tail,
+		size: d.size,
+	}
+	copy(clone.buf, d.buf)
+	return clone
+}
