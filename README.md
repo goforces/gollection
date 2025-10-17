@@ -1,5 +1,7 @@
 # Go Collections Framework (GCF)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A Go-native Collections Framework inspired by Java/Kotlin `java.util.*`, built with generics (Go 1.18+).
 
 ## Vision
