@@ -39,3 +39,26 @@ func (g *Graph[T]) Vertices() []T {
 	}
 	return out
 }
+
+// RemoveVertex removes a vertex and all edges connected to it.
+func (g *Graph[T]) RemoveVertex(v T) {
+	// Remove all edges pointing to v from other vertices
+	for vertex := range g.adj {
+		delete(g.adj[vertex], v)
+	}
+	// Remove the vertex itself
+	delete(g.adj, v)
+}
+
+// RemoveEdge removes an edge from u to v.
+// For undirected graphs, removes both u->v and v->u.
+func (g *Graph[T]) RemoveEdge(u, v T) {
+	if neighbors, ok := g.adj[u]; ok {
+		delete(neighbors, v)
+	}
+	if !g.directed {
+		if neighbors, ok := g.adj[v]; ok {
+			delete(neighbors, u)
+		}
+	}
+}

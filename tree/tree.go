@@ -62,3 +62,48 @@ func (t *BinaryTree[K, V]) Contains(k K) bool {
 	_, ok := t.Get(k)
 	return ok
 }
+
+// Delete removes the key from the tree. Returns true if the key was present.
+func (t *BinaryTree[K, V]) Delete(k K) bool {
+	if !t.Contains(k) {
+		return false
+	}
+	t.root = deleteNode(t.root, k, t.cmp)
+	return true
+}
+
+func deleteNode[K any, V any](n *node[K, V], k K, cmp func(a, b K) int) *node[K, V] {
+	if n == nil {
+		return nil
+	}
+	
+	s := cmp(k, n.key)
+	if s < 0 {
+		n.left = deleteNode(n.left, k, cmp)
+	} else if s > 0 {
+		n.right = deleteNode(n.right, k, cmp)
+	} else {
+		// Found the node to delete
+		// Case 1: No children or one child
+		if n.left == nil {
+			return n.right
+		}
+		if n.right == nil {
+			return n.left
+		}
+		
+		// Case 2: Two children - find in-order successor (min in right subtree)
+		successor := findMin(n.right)
+		n.key = successor.key
+		n.val = successor.val
+		n.right = deleteNode(n.right, successor.key, cmp)
+	}
+	return n
+}
+
+func findMin[K any, V any](n *node[K, V]) *node[K, V] {
+	for n.left != nil {
+		n = n.left
+	}
+	return n
+}

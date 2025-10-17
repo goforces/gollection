@@ -53,11 +53,9 @@ func (s *HashSet[T]) Len() int { return len(s.m) }
 // IsEmpty reports whether the set has no elements.
 func (s *HashSet[T]) IsEmpty() bool { return len(s.m) == 0 }
 
-// Clear removes all elements from the set.
+// Clear removes all elements from the set in O(1) time.
 func (s *HashSet[T]) Clear() {
-	for k := range s.m {
-		delete(s.m, k)
-	}
+	s.m = make(map[T]struct{})
 }
 
 // ToSlice returns all elements as a slice, in unspecified order.
